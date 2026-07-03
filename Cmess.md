@@ -28,37 +28,36 @@ Running: Linux 4.X|5.X
 OS CPE: cpe:/o:linux:linux_kernel:4.4 cpe:/o:linux:linux_kernel:5.4
 OS details: Linux 4.4, Linux 5.4
 ```
-Then I map the \<IP> with cmess.thm. And then brute force directory with ffuf and found the /admin page.
-![[cmess1.png]]
-
-The home page
-![[cmess2.png]]
-And the admin log in page.
-![[cmess3.png]]
-I brute force subdomain and found the following.
-![[cmess4.png]]
-Add dev.cmess.thm to the /etc/hosts file. And browsing that url I found admin log in credentials
-![[cmess5.png]]
+Then I map the \<IP> with cmess.thm. And then brute force directory with ffuf and found the /admin page.<br/>
+![](Assets/cmess1.png)<br/>
+The home page<br/>
+![](Assets/cmess2.png)<br/>
+And the admin log in page.<br/>
+![](Assets/cmess3.png)<br/>
+I brute force subdomain and found the following.<br/>
+![](Assets/cmess4.png)<br/>
+Add dev.cmess.thm to the /etc/hosts file. And browsing that url I found admin log in credentials<br/>
+![](Assets/cmess5.png)<br/>
 `andre@cmess.thm:KPFTN_f2yxe%`
-Using this credential I log in to the admin pannel.
-![[cmess6.png]]
-And found the cms version. 
-Googling that version I found this exploit 
-![[cmess7.png]]
-Using this exploit I get the reverse shell. 
-![[cmess8.png]]
-![[cmess9.png]]
-In /opt directory I found a .bak file that has andre's password.
-![[cmess10.png]]
-Using that password I logged in as andre and retrived the user flag.
-![[cmess11.png]]
-In `/etc/crontab` I found the following 
-![[cmess12.png]]
-All the contents from `/home/andre/backup` are backed up in every 2 minutes.  To escalate privilege I run the following commands.
+Using this credential I log in to the admin pannel. <br/>
+![](Assets/cmess6.png)<br/>
+And found the cms version. <br/>
+Googling that version I found this exploit<br/> 
+![](Assets/cmess7.png)<br/>
+Using this exploit I get the reverse shell.<br/> 
+![](Assets/cmess8.png)<br/>
+![](Assets/cmess9.png)<br/>
+In /opt directory I found a .bak file that has andre's password.<br/>
+![](Assets/cmess10.png)<br/>
+Using that password I logged in as andre and retrived the user flag.<br/>
+![](Assets/cmess11.png)<br/>
+In `/etc/crontab` I found the following <br/>
+![](Assets/cmess12.png)<br/>
+All the contents from `/home/andre/backup` are backed up in every 2 minutes.  To escalate privilege I run the following commands.<br/>
 ```bash
 echo 'cp /bin/bash /tmp/bash;chmod +s /tmp/bash' > /home/andre/backup/esc.sh
 touch /home/andre/backup/--checkpoint=1
 touch /home/andre/backup/--checkpoint-action=exec=sh\ esc.sh
 ```
-To learn more about this privilege escalation [visit](https://systemweakness.com/privilege-escalation-using-wildcard-injection-tar-wildcard-injection-a57bc81df61c)
-![[cmess13.png]]
+To learn more about this privilege escalation [visit](https://systemweakness.com/privilege-escalation-using-wildcard-injection-tar-wildcard-injection-a57bc81df61c)<br/>
+![](Assets/cmess13.png)<br/>
