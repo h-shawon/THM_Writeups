@@ -137,7 +137,7 @@ And obtained the user flag.
 Using `sudo -l` I found 
 ![](Assets/Athena11.png)
 With `modinfo` I found. <br/>
-![](Assets/Athena12.png)
+![](Assets/Athena12.png)<br/>
 Googling about the author `m0nad` and `venom.ko` I found this [repo](https://github.com/m0nad/Diamorphine)
 And following this [writeup](https://medium.com/@tommasogreco/tryhackme-athena-walkthrough-4f45a4e15466) I became root.
 ![](Assets/Athena13.png)
