@@ -94,7 +94,7 @@ I /dinningRoom submit the gold emblem flag<br/>
 Decoding it with cyberchef in Vigenère cipher using key 'rebecca'
 `there is a shield key inside the dining room. The html page is called the_great_shield_key`
 Visiting the URL: http://<machine_ip>/diningRoom/the_great_shield_key.html get the shield key
-![](Assets/bio24.png)
+![](Assets/bio24.png)<br/>
 In the /armorRoom submit the shield key flag
 ![](Assets/bio25.png)
 And then click READ 
