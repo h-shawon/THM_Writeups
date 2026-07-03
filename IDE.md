@@ -47,8 +47,8 @@ OS fingerprint not ideal because: Missing a closed TCP port so results incomplet
 Aggressive OS guesses: Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (95%), ASUS RT-N56U WAP (Linux 3.4) (93%), Linux 3.16 (93%), Adtran 424RG FTTH gateway (93%), Linux 2.6.32 (93%), Linux 3.11 (93%), Linux 3.2 - 4.9 (93%), Linux 3.5 (93%)
 ```
 
-ftp allows anonymous login 
-![[ide1.png]]
+ftp allows anonymous login <br/>
+![](Assets/ide1.png)<br/>
 view the content of the file
 ```bash
 more -- -                                    
@@ -57,19 +57,19 @@ I have reset the password as you have asked. Please use the default password to 
 Also, please take care of the image file ;)
 - drac.
 ```
-visit the url http://<machine_ip:62337>
-![[ide2.png]]
-the CMS is 
-`Codiad version 2.8.4`
-According to the ftp, credentials are 
-`username: john password:password`
-Using searchsploit I have found a exploit for this version
- ![[ide3.png]]
- Using the first exploit I get the shell
- ![[ide4.png]]
+visit the url http://<machine_ip:62337><br/>
+![](Assets/ide2.png)<br/>
+the CMS is <br/>
+`Codiad version 2.8.4`<br/>
+According to the ftp, credentials are <br/>
+`username: john password:password`<br/>
+Using searchsploit I have found a exploit for this version<br/>
+ ![](Assets/ide3.png)<br/>
+ Using the first exploit I get the shell<br/>
+ ![](Assets/ide4.png)<br/>
 ### Privilege Escalation 
-Using the SUID to pkexec get the root privilege.
-![[ide5.png]]
- Now retrieve all the flags.
- ![[ide6.png]]
+Using the SUID to pkexec get the root privilege.<br/>
+![](Assets/ide5.png)<br/>
+ Now retrieve all the flags.<br/>
+ ![](Assets/ide6.png)<br/>
  
