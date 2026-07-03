@@ -36,15 +36,15 @@ OS CPE: cpe:/o:linux:linux_kernel:4.15
 OS details: Linux 4.15
 ```
 
-Going to the http port I loged in using credential `admin:admin`. 
-![[broker1.png]]
-![[broker2.png]]
-W get the activemq version is 5.9.0. Googling that version I found a metasploit exploit for this version.
-![[broker3.png]]
-![[broker4.png]]
-![[broker5.png]]
-![[broker6.png]]
-Now for being root I do the following
-![[broker7.png]]
+Going to the http port I loged in using credential `admin:admin`. <br/>
+![](Assets/broker1.png)<br/>
+![](Assets/broker2.png)<br/>
+W get the activemq version is 5.9.0. Googling that version I found a metasploit exploit for this version.<br/>
+![](Assets/broker3.png)<br/>
+![](Assets/broker4.png)<br/>
+![](Assets/broker5.png)<br/>
+![](Assets/broker6.png)<br/>
+Now for being root I do the following<br/>
+![](Assets/broker7.png)<br/>
 #### The video game name is `Hackenet`
-![[broker8.png]]
+![](Assets/broker8.png)<br/>
