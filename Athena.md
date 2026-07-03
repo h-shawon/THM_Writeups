@@ -127,7 +127,7 @@ Using [penelope](https://github.com/brightio/penelope)shell handler i receive th
 Using pspy64 I have found some interesting interesting process is executing as user athena.
 ![](Assets/Athena6.png)
 And this file has write permission.<br/>
-![](Assets/Athena7.png)
+![](Assets/Athena7.png)<br/>
 So I again insert a reverse shell in that file and obtained shell as user athena. 
 ![](Assets/Athena8.png)
 ![](Assets/Athena9.png)
@@ -136,7 +136,7 @@ And obtained the user flag.
 # Privilege to root
 Using `sudo -l` I found 
 ![](Assets/Athena11.png)
-With `modinfo` I found. 
+With `modinfo` I found. <br/>
 ![](Assets/Athena12.png)
 Googling about the author `m0nad` and `venom.ko` I found this [repo](https://github.com/m0nad/Diamorphine)
 And following this [writeup](https://medium.com/@tommasogreco/tryhackme-athena-walkthrough-4f45a4e15466) I became root.
