@@ -117,27 +117,27 @@ getting file \msg_for_administrator.txt of size 253 as msg_for_administrator.txt
 Viewing the `msg_for_administrator.txt` file i found `/myrouterpanel`.
 ![](Assets/Athena1.png)
 Visiting the provided url I found an input section that takes input an ip address and ping it.
-![[Athena2.png]]
+![](Assets/Athena2.png)
 So I thought there can be command injection vulnerability. So I crafted a netcat payload and injected it. But there was filtering issue.
-![[Athena3.png]]
+![](Assets/Athena3.png)
 After trying sometime I was able to receive the reverse shell.
-![[Athena4.png]]
+![](Assets/Athena4.png)
 Using [penelope](https://github.com/brightio/penelope)shell handler i receive the shell.
-![[Athena5.png]]
+![](Assets/Athena5.png)
 Using pspy64 I have found some interesting interesting process is executing as user athena.
-![[Athena6.png]]
+![](Assets/Athena6.png)
 And this file has write permission.
-![[Athena7.png]]
+![](Assets/Athena7.png)
 So I again insert a reverse shell in that file and obtained shell as user athena. 
-![[Athena8.png]]
-![[Athena9.png]]
+![](Assets/Athena8.png)
+![](Assets/Athena9.png)
 And obtained the user flag.
-![[Athena10.png]]
+![](Assets/Athena10.png)
 # Privilege to root
 Using `sudo -l` I found 
-![[Athena11.png]]
+![](Assets/Athena11.png)
 With `modinfo` I found. 
-![[Athena12.png]]
+![](Assets/Athena12.png)
 Googling about the author `m0nad` and `venom.ko` I found this [repo](https://github.com/m0nad/Diamorphine)
 And following this [writeup](https://medium.com/@tommasogreco/tryhackme-athena-walkthrough-4f45a4e15466) I became root.
-![[Athena13.png]]
+![](Assets/Athena13.png)
