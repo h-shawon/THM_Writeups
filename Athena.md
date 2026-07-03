@@ -126,7 +126,7 @@ Using [penelope](https://github.com/brightio/penelope)shell handler i receive th
 ![](Assets/Athena5.png)
 Using pspy64 I have found some interesting interesting process is executing as user athena.
 ![](Assets/Athena6.png)
-And this file has write permission.
+And this file has write permission.<br/>
 ![](Assets/Athena7.png)
 So I again insert a reverse shell in that file and obtained shell as user athena. 
 ![](Assets/Athena8.png)
