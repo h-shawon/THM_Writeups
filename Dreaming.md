@@ -26,25 +26,25 @@ OS CPE: cpe:/o:linux:linux_kernel:4.15
 OS details: Linux 4.15
 ```
 
-Browsing the http port we get default apache page.
-Then I start fuzzing
-![[dream1.png]]
-I found `/app` directory.
-![[dream2.png]]
-It has a CMS pluck version 4.7.13
-Using searchsploit I have found a exploit for this version.
-![[dream3.png]]
-File Upload RCE.
-The home page
-![[dream4.png]]
-By clicking the admin I found a login page requesting for password. 
-![[dream5.png]]
-Guessing default password as `password` I was able to log in to the pannel.
-![[dream6.png]]
-I upload a php reverse shell with .phar extension.
-![[dream7.png]]
-Then clicking the glass icon beside the file name I visited the upload file and obtained the reverse shell. And make it a stable shell with tty shell.
-![[dream9.png]]
-In `/opt` directory I have found a python file with lucien password.
-![[dream10.png]]
-Using the password `HeyLucien#@1999!` I logged in as lucien.
+Browsing the http port we get default apache page.<br/>
+Then I start fuzzing<br/>
+![](Assets/dream1.png)<br/>
+I found `/app` directory.<br/>
+![](Assets/dream2.png)<br/>
+It has a CMS pluck version 4.7.13<br/>
+Using searchsploit I have found a exploit for this version.<br/>
+![](Assets/dream3.png)<br/>
+File Upload RCE.<br/>
+The home page<br/>
+![](Assets/dream4.png)<br/>
+By clicking the admin I found a login page requesting for password. <br/>
+![](Assets/dream5.png)<br/>
+Guessing default password as `password` I was able to log in to the pannel.<br/>
+![](Assets/dream6.png)<br/>
+I upload a php reverse shell with .phar extension.<br/>
+![](Assets/dream7.png)<br/>
+Then clicking the glass icon beside the file name I visited the upload file and obtained the reverse shell. And make it a stable shell with tty shell.<br/>
+![](Assets/dream9.png)<br/>
+In `/opt` directory I have found a python file with lucien password.<br/>
+![](Assets/dream110.png)<br/>
+Using the password `HeyLucien#@1999!` I logged in as lucien.<br/>
