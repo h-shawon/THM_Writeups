@@ -115,7 +115,7 @@ smb: \> get msg_for_administrator.txt
 getting file \msg_for_administrator.txt of size 253 as msg_for_administrator.txt (0.6 KiloBytes/sec) (average 0.6 KiloBytes/sec)
 ```
 Viewing the `msg_for_administrator.txt` file i found `/myrouterpanel`.
-![[Athena1.png]]
+![](Assets/Athena1.png)
 Visiting the provided url I found an input section that takes input an ip address and ping it.
 ![[Athena2.png]]
 So I thought there can be command injection vulnerability. So I crafted a netcat payload and injected it. But there was filtering issue.
