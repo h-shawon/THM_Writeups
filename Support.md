@@ -30,43 +30,43 @@ Aggressive OS guesses: Linux 5.14 - 6.8 (96%), Linux 4.15 - 5.19 (96%), Linux 4.
 No exact OS matches for host (test conditions non-ideal).
 ```
 Using dirsearch I found this.<br/>
-![](Asstes/support1.png)<br/>
+![](Assets/support1.png)<br/>
 Visiting the website.<br/>
-![](Asstes/support3.png)<br/>
+![](Assets/support3.png)<br/>
 I bruteforced the password for email `help@support.thm` <br/>
-![](Asstes/support2.png)<br/>
+![](Assets/support2.png)<br/>
 Using the credential I logged in.
 ```
 email: help@suppoet.thm
 password: snoopy
 ```
-![](Asstes/support4.png)<br/>
+![](Assets/support4.png)<br/>
 In cookie editor I found<br/>
-![](Asstes/support5.png)<br/>
+![](Assets/support5.png)<br/>
 I decrypt the value.<br/>
-![](Asstes/support6.png)<br/>
+![](Assets/support6.png)<br/>
 Then I create a MD5 hash for `true` value, that is `b326b5062b2f0e69046810717534cb09`. Set for cookie editor and again send the request.<br/>
-![](Asstes/support7.png)<br/>
+![](Assets/support7.png)<br/>
 Clicking View API.<br/>
-![](Asstes/support8.png)<br/>
+![](Assets/support8.png)<br/>
 For `/user/1` I found special admin with admin information.<br/>
-![](Asstes/support9.png)<br/>
+![](Assets/support9.png)<br/>
 After trying many things atlast I found something suspecious.<br/>
-![](Asstes/support10.png)<br/>
+![]![](Assets/support10.png)<br/>
 But the given password was not accurate. Removing the @ I could login as admin.
 ```
 email: specialadmin@support.thm
 password: support110
 ```
 And found the admin flag.<br/>
-![](Asstes/support11.png)<br/>
+![]![](Assets/support11.png)<br/>
 In this page I found a option to check date and time.<br/>
-![](Asstes/support12.png)<br/>
+![](Assets/support12.png)<br/>
 In burpsuite <br/>
-![](Asstes/support13.png)<br/>
+![](Assets/support13.png)<br/>
 I changed the `sys` value to `id`. But it says<br/>
-![](Asstes/support14.png)<br/>
+![](Assets/support14.png)<br/>
 So I changed it to `date;id`. And Boom!<br/>
-![](Asstes/support15.png)<br/>
+![](Assets/support15.png)<br/>
 Then I changed the value to `date;cat /home/ubuntu/user.txt` and got the flag.<br/>
-![](Asstes/support16.png)<br/>
+![](Assets/support16.png)<br/>
