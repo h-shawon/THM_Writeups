@@ -41,6 +41,6 @@ PORT      STATE  SERVICE REASON         VERSION
 42483/tcp closed unknown reset ttl 60
 No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
 ```
-The ftp allows anonymous login. 
-![[op1.png]]
-Found the tree name: `the whale`
+The ftp allows anonymous login. <br/>
+![](Assets/op1.png) <br/>
+Found the tree name: `the whale` <br/>

