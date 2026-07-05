@@ -37,39 +37,38 @@ OS fingerprint not ideal because: Missing a closed TCP port so results incomplet
 Aggressive OS guesses: Linux 5.14 - 6.8 (96%), Linux 4.15 - 5.19 (96%), Linux 4.15 (95%), Linux 5.4 - 5.15 (95%), Android 10 - 12 (Linux 4.14 - 4.19) (93%), Android 10 - 11 (Linux 4.9 - 4.14) (92%), Android 9 - 11 (Linux 4.9 - 4.14) (92%), Linux 2.6.32 (92%), Linux 3.1 - 3.2 (92%), Linux 3.11 (92%)
 No exact OS matches for host (test conditions non-ideal).
 ```
-Anonymous ftp login is allowed.
-I found a `README.txt` in pub directory. That says
-![](Assets/jump1.png)
-I uploaded a bash reverse shell named test.sh through ftp to incoming directory. and received the shell.
-![](Assets/jump2.png)
-And in `recon_user` home directory I found the first flag.
-![](Assets/jump3.png)
+Anonymous ftp login is allowed.<br/>
+I found a `README.txt` in pub directory. That says<br/>
+![](Assets/jump1.png)<br/>
+I uploaded a bash reverse shell named test.sh through ftp to incoming directory. and received the shell.<br/>
+![](Assets/jump2.png)<br/>
+And in `recon_user` home directory I found the first flag.<br/>
+![](Assets/jump3.png)<br/>
 ### recon_user
-In `/opt/dev_user` I found `backup.sh` which is writable by recon_user. I write a reverse shell and received a shell as dev_user.
-![](Assets/jump4.png)
-![](Assets/jump5.png)
+In `/opt/dev_user` I found `backup.sh` which is writable by recon_user. I write a reverse shell and received a shell as dev_user.<br/>
+![](Assets/jump4.png)<br/>
+![](Assets/jump5.png)<br/>
 ### dev_user
-Running `pspy64` I found something interesting.
-![](Assets/jump6.png)
-The file `/usr/local/bin/healthcheck` is owned by `monitor_user` and ran by `monitr_user`. Inside the file i found the following.
-![](Assets/jump7.png)
-There is also a `ps` command in `/opt/dev/bin` folder. I rewrite the `ps` command with reverse shell and obtained the shell.
-![](Assets/jump8.png)
-Give it execution permission.
-![](Assets/jump9.png)
-Here is the flag.
-![](Assets/jump10.png)
+Running `pspy64` I found something interesting.<br/>
+![](Assets/jump6.png)<br/>
+The file `/usr/local/bin/healthcheck` is owned by `monitor_user` and ran by `monitr_user`. Inside the file i found the following.<br/>
+![](Assets/jump7.png)<br/>
+There is also a `ps` command in `/opt/dev/bin` folder. I rewrite the `ps` command with reverse shell and obtained the shell.<br/>
+![](Assets/jump8.png)<br/>
+Give it execution permission.<br/>
+![](Assets/jump9.png)<br/>
+Here is the flag.<br/>
+![](Assets/jump10.png)<br/>
 ### monitor_user
-Running `sudo -l` I found I can run `ops_user`'s file.
-![](Assets/jump11.png)
-Reading this file I found `deploy_helper`. In which I have write permission.
-I edited that file with reverse shell and obtained the shell as `ops_user`.
-![](Assets/jump12.png)
-![](Assets/jump13.png)
+Running `sudo -l` I found I can run `ops_user`'s file.<br/>
+![](Assets/jump11.png)<br/>
+Reading this file I found `deploy_helper`. In which I have write permission.<br/>
+I edited that file with reverse shell and obtained the shell as `ops_user`.<br/>
+![](Assets/jump12.png)<br/>
+![](Assets/jump13.png)<br/>
 ### ops_user 
-Running `sudo -l` I found 
-![](Assets/jump14.png)
-Using [gtfobins](https://gtfobins.org/gtfobins/less/#inherit) I executed the command and get shell as root.
-`sudo less /etc/hosts`
-then type `!/bin/sh`
-![](Assets/jump15.png)
+Running `sudo -l` I found <br/>
+![](Assets/jump14.png)<br/>
+Using [gtfobins](https://gtfobins.org/gtfobins/less/#inherit) I executed the command and get shell as root.<br/>
+`sudo less /etc/hosts` then type `!/bin/sh`  <br/>
+![](Assets/jump15.png) <br/>
