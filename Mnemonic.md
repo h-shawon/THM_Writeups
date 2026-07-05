@@ -29,27 +29,27 @@ Aggressive OS guesses: Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Networ
 No exact OS matches for host (test conditions non-ideal).
 ```
 
-Visiting http://10.10.188.63/robots.txt I found
-![[mnemonic1.png]]
-Fuzzing that url reveals some information
-![[mnemonic2.png]]
-Then fuzzing the backups directory
-![[mnemonic3.png]]
-I have downloaded the backups.zip file but
-![[mnemonic4.png]]
-Using John The Ripper I have cracked the password
-![[mnemonic5.png]]
-Unzip password is: 00385007
-Uzipping that file i received note.txt 
-![[mnemonic6.png]]
-So the ftp username is ftpuser.
-Using hydra I got the password.
-![[mnemonic7.png]]
-ftp credentials `ftpuser:love4ever`
-Using the credentials I loged in to the ftp server. And get
-![[mnemonic8.png]]
-I have searched all the directory for credentials. Then I got something from `data-4`
-![[mnemonic9.png]]
+Visiting http://10.10.188.63/robots.txt I found <br/>
+![](Assets/mnemonic1.png)<br/>
+Fuzzing that url reveals some information <br/>
+![](Assets/mnemonic2.png) <br/>
+Then fuzzing the backups directory <br/>
+![](Assets/mnemonic3.png) <br/>
+I have downloaded the backups.zip file but <br/>
+![](Assets/mnemonic4.png) <br/>
+Using John The Ripper I have cracked the password <br/>
+![](Assets/mnemonic5.png) <br/>
+Unzip password is: 00385007 <br/>
+Uzipping that file i received note.txt  <br/>
+![](Assets/mnemonic6.png) <br/>
+So the ftp username is ftpuser. <br/>
+Using hydra I got the password. <br/>
+![](Assets/mnemonic7.png) <br/>
+ftp credentials `ftpuser:love4ever` <br/>
+Using the credentials I loged in to the ftp server. And get <br/>
+![](Assets/mnemonic8.png) <br/>
+I have searched all the directory for credentials. Then I got something from `data-4` <br/>
+![](Assets/mnemonic9.png) <br/>
 From not.txt 
 ```bash
 cat not.txt
@@ -73,27 +73,27 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed. 
 ```
 
-Therefore, the ssh credentials `james:bluelove`
-After login as james I got this 
-![[mnemonic10.png]]
-IPS starts blocking so have to do quick.
-![[menmonic14.png]]
-![[mnemonic15.png]]
-From `/home/condor` I got
-![[mnemonic12.png]]
-Following that link
-![[mnemonic13.png]]
+Therefore, the ssh credentials `james:bluelove` <br/>
+After login as james I got this  <br/>
+![](Assets/mnemonic10.png) <br/>
+IPS starts blocking so have to do quick. <br/>
+![](Assets/mnemonic14.png) <br/>
+![](Assets/mnemonic15.png) <br/>
+From `/home/condor` I got <br/>
+![](Assets/mnemonic12.png) <br/>
+Following that link <br/>
+![](Assets/mnemonic13.png) <br/>
 
-According to the information this is a image based mnemonic encryption and password file is 6450.txt
-Using [this](https://github.com/MustafaTanguner/Mnemonic.git) tool I decrypted the message
-![[mnemonic16.png]]
-![[mnemonic17.png]]
+According to the information this is a image based mnemonic encryption and password file is 6450.txt <br/>
+Using [this](https://github.com/MustafaTanguner/Mnemonic.git) tool I decrypted the message <br/>
+![](Assets/mnemonic16.png) <br/>
+![](Assets/mnemonic17.png) <br/>
 
-So the condor credential is `condor:pasificbell1981`
+So the condor credential is `condor:pasificbell1981` <br/>
 After login as condor I use the following command and found SUID bit is set to `/usr/bin/pkexec`
 ```bash
 find / -type f -perm -u=s 2>/dev/null
 ```
 
-Then using this vulnerability I got the root shell.
-![[mnemonic18.png]]
+Then using this vulnerability I got the root shell. <br/>
+![](Assets/mnemonic18.png) <br/>
