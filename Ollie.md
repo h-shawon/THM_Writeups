@@ -63,30 +63,30 @@ Aggressive OS guesses: Linux 5.14 - 6.8 (96%), Linux 4.15 - 5.19 (96%), Linux 4.
 No exact OS matches for host (test conditions non-ideal).
 ```
 First I visited the webpage. <br/>
-![[Assets/ollie1.png]] <br/>
+![](Assets/ollie1.png) <br/>
 It give me the CMS `phpIPAM` and it's version `1.4.5`. Googling about it I have found authenticated vulnerability exploit. <br/>
-![[Assets/ollie4.png]]<br/>
+![](Assets/ollie4.png)<br/>
 But I needed username and password for authentication. From the Port scanning I connected to the port 1337 via `nc`. And found the username and password.  <br/>
-![[Assets/ollie2.png]] <br/>
+![](Assets/ollie2.png) <br/>
 Using this username and password I logged in as admin. <br/>
-![[Assets/ollie3.png]] <br/>
+![](Assets/ollie3.png) <br/>
 After that I using the script I logged I got shell. <br/>
-![[Assets/ollie5.png]] <br/>
+![](Assets/ollie5.png) <br/>
 Then I have found `evil.php` webshell. <br/>
-![[Assets/ollie6.png]] <br/>
+![](Assets/ollie6.png) <br/>
 Uploaded by the script. <br/>
-![[Assets/ollie7.png]] <br/>
+![](Assets/ollie7.png) <br/>
 Then using this I got the reverse shell. <br/>
-![[Assets/ollie8.png]] <br/>
-![[Assets/ollie9.png]] <br/>
+![](Assets/ollie8.png) <br/>
+![](Assets/ollie9.png) <br/>
 Using the same password again I became `ollie`. <br/>
-![[Assets/ollie10.png]]<br/>
+![](Assets/ollie10.png) <br/>
 # Privilege Escalation
 While enumeration, using `pspy64` I have found and interesting process. <br/>
-![[Assets/ollie11.png]] <br/>
+![](Assets/ollie11.png) <br/>
 After that I found the location of `feedme` <br/>
-![[Assets/ollie12.png]] <br/>
+![](Assets/ollie12.png) <br/>
 I can write to the running binary. And it was executed by root every minute. So, <br/>
-![[Assets/ollie13.png]]<br/>
+![](Assets/ollie13.png) <br/>
 And got the root shell. <br/>
-![[Assets/ollie14.png]]<br/>
+![](Assets/ollie14.png)<br/>
