@@ -26,23 +26,23 @@ OS fingerprint not ideal because: Missing a closed TCP port so results incomplet
 Aggressive OS guesses: Linux 3.10 - 3.13 (96%), Linux 3.13 (96%), Linux 4.4 (96%), Linux 5.4 (95%), Linux 3.8 - 3.16 (93%), Sony Android TV (Android 5.0) (92%), Android 5.0 - 6.0.1 (Linux 3.4) (92%), Android 5.1 (92%), Android 6.0 - 9.0 (Linux 3.18 - 4.4) (92%), Android 7.1.1 - 7.1.2 (92%)
 ```
 Visited the webpage: <br/>
-![[Assets/battery1.png]] <br/>
+![](Assets/battery1.png) <br/>
 Found nothing suspicious. So I performed directory bruteforcing. And found the following <br/>
-![[Assets/battery2.png]] <br/>
+![](Assets/battery2.png) <br/>
 So first I visited the `admin.php` <br/>
-![[Assets/battery3.png]] <br/>
+![](Assets/battery3.png) <br/>
 Clicking the register button, I registered for new account. <br/>
-![[Assets/battery4.png]] <br/>
+![](Assets/battery4.png) <br/>
 And logged in. <br/>
-![[Assets/battery5.png]] <br/>
+![](Assets/battery5.png) <br/>
 But in my account page and command page needs to be admin user. <br/>
-![[Assets/battery6.png]] <br/>
-![[Assets/battery7.png]] <br/>
+![](Assets/battery6.png) <br/>
+![](Assets/battery7.png) <br/>
 But in form.php page I found XML input section. <br/>
-![[Assets/battery8.png]] <br/>
+![](Assets/battery8.png) <br/>
 But I needed to be admin to access this page. <br/>
 I visited the `/report` and it download a binary. <br/>
-![[Assets/battery9.png]] <br/>
+![](Assets/battery9.png) <br/>
 I decompiled the binary and found the following code. 
 ```txt
 void update(char *a0, unsigned long long a1)
@@ -147,20 +147,20 @@ unsigned int main(void)
 }
 ```
 So `admin@bank.a` is an admin account. So I tried to create an account with this name. But <br/>
-![[Assets/battery11.png]] <br/>
+![](Assets/battery11.png) <br/>
 So I just changed the name with `admin@bank.a+a`. And successfully created an account. <br/>
-![[Assets/battery12.png]] <br/>
+![](Assets/battery12.png) <br/>
 Then I got access to the form page. <br/>
 **This page was protected by simple client-side javascript. Try to bypass that.**
 Then injecting XML payload I found XXE.  <br/>
-![[Assets/battery14.png]] <br/>
+![](Assets/battery14.png) <br/>
 Using php wraper I got the acc.php source code in bas64 encoded form.  <br/>
 Decoding the encoded version I got the following  <br/>
-![[Assets/battery16.png]] <br/>
+![](Assets/battery16.png) <br/>
 Using the username and password I got access via ssh. <br/>
-![[Assets/battery17.png]] <br/>
+![](Assets/battery17.png) <br/>
 # Privilege Escalation
 I ran `sudo -l` and found: <br/>
-![[Assets/battery18.png]] <br/>
+![](Assets/battery18.png) <br/>
 I have write access on this directory. So created a new run.py with `/bin/bash` payload to be root. <br/>
-![[Assets/battery19.png]] <br/>
+![](Assets/battery19.png) <br/>
